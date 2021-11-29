@@ -12,20 +12,20 @@
                         <h5>{{ product.sku }}</h5>
                         <h5>{{ product.name }}</h5>
                         <h5>{{ product.price }} $</h5>
-                        <h6 v-if="product.type == 'furniture'">
+                        <h6 v-if="product.type == 'Furniture'">
                             Dimensions:
                             <span v-for="(v, k) in product.attributes">
                                 <span v-if="k == 'length' || k == 'height'">*</span>
                                 {{v}}
                             </span>
                         </h6>
-                        <h6 v-if="product.type == 'book'">
+                        <h6 v-if="product.type == 'Book'">
                             Weight:
                             <span v-for="(v, k) in product.attributes">
                                 {{v}} KG
                             </span>
                         </h6>
-                        <h6 v-if="product.type == 'dvd'">
+                        <h6 v-if="product.type == 'DVD'">
                             Size:
                             <span v-for="(v, k) in product.attributes">
                                 {{v}} MB

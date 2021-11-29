@@ -233,7 +233,7 @@
                                 <p class="text-danger" v-if="errors.attributes.lengthAttr">{{ errors.attributes.lengthAttr }}</p>
                             </div>
                         </div>
-                        <p>Please, Provide dimensions in HxWxL format</p>
+                        <br><p class="text-right">Please, Provide dimensions in HxWxL format</p>
                     </div>
 
                     <div class="form-group mb-3" v-if="formData.type == 'DVD'">
@@ -244,7 +244,7 @@
                             <input type="number" @input="errors.attributes.size = ''" v-model="formData.attributes.size" id="size" maxlength="10" class="form-control" placeholder="Size in MB">
                             <p class="text-danger" v-if="errors.attributes.size">{{ errors.attributes.size }}</p>
                         </div>
-                        <p>Please, Provide Size</p>
+                        <br><p class="text-right">Please, Provide Size</p>
                     </div>
 
                     <div class="form-group mb-3" v-if="formData.type == 'Book'">
@@ -255,7 +255,7 @@
                             <input type="number" @input="errors.attributes.weight = ''" v-model="formData.attributes.weight" id="weight" maxlength="10" class="form-control" placeholder="Weight in KG">
                             <p class="text-danger" v-if="errors.attributes.weight">{{ errors.attributes.weight }}</p>
                         </div>
-                        <p>Please, Provide Weight</p>
+                        <br><p class="text-right">Please, Provide Weight</p>
                     </div>
                     <br><br>
                 </div>
