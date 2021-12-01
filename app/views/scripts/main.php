@@ -1,6 +1,7 @@
 <?php require_once('add-product.php') ?>
 <?php require_once('product-list.php') ?>
 <script>
+
     var routes = [
         {path:'/', component: ProductList},
         {path:'/add-product',component:addProduct}
@@ -31,8 +32,17 @@
         methods: {
             deleteProducts() {
                 let ids = [];
-                let checkboxes = document.querySelectorAll('.delete-checkbox:checked');
-                let allchecked = document.querySelectorAll('.delete-checkbox:checked');
+                let checkboxes = document.querySelectorAll('.delete:checked');
+                let allchecked = document.querySelectorAll('.delete:checked');
+
+                if(checkboxes.length == $('.delete').length) {
+                    //  $('.delete').parent().remove()
+                     var tags = document.getElementsByTagName('script');
+                     for (var i = tags.length; i >= 0; i--){ //search backwards within nodelist for matching elements to remove
+                      if (tags[i] && tags[i].getAttribute('src') != null && tags[i].getAttribute('src').indexOf(filename) != -1)
+                       tags[i].parentNode.removeChild(tags[i]); //remove element by calling parentNode.removeChild()
+                     }
+                }
 
                 for (var i = 0; i < checkboxes.length; i++) {
                     ids.push(checkboxes[i].value)

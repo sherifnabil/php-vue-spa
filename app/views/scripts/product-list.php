@@ -7,7 +7,9 @@
                 <div v-if="products.length" v-for="product in products" class="col-md-3 ">
                     <div class="x_panel">
                         <div class="x_title">
-                            <input class="delete-checkbox" type="checkbox" :value="product.id">
+                        <template class="">
+                            <input class="delete delete-checkbox" type="checkbox" :value="product.id">
+                        </template>
                         </div>
                         <h5>{{ product.sku }}</h5>
                         <h5>{{ product.name }}</h5>

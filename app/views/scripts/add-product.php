@@ -150,7 +150,7 @@
         },
 
         template: `
-            <form>
+            <form id="product_form">
                 <div class="col-md-8">
                     <div class="form-group mb-3">
                         <div class="col-md-2">
