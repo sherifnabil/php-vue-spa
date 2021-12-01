@@ -33,7 +33,8 @@
             deleteProducts() {
                 let ids = [];
                 let checkboxes = document.querySelectorAll('.delete:checked');
-                let allchecked = document.querySelectorAll('.delete:checked');
+                let allchecked = document.querySelectorAll('.delete');
+                const self = this;
 
                 for (var i = 0; i < checkboxes.length; i++) {
                     ids.push(checkboxes[i].value)
@@ -41,27 +42,23 @@
                 if(!ids.length) return alert('No products selected!');
 
                 if(confirm('Are you sure you want to delete Products')) {
-                    axios.post('/product-delete', {ids})
+                    if(checkboxes.length == document.querySelectorAll('.delete').length) {
+                        document.querySelectorAll('.delete-checkbox').forEach(e => e.remove());
+
+                        document.getElementsByTagName('script')[7].remove();
+                        document.getElementsByTagName('script')[6].remove();
+                        document.getElementsByTagName('script')[5].remove();
+                    }
+                    axios.post('/product-delete', {ids:ids})
                     .then((res) => {
                         for (let i = 0; i < ids.length; i++) {
-                            const element = ids.find(e => e.id === ids[i]);
-                            this.products.splice(element, 1);
+                            const element = self.products.find(e => e.id === ids[i]);
+                            self.products.splice(self.products.indexOf(element), 1);
                         }
                     })
-                    if(checkboxes.length == document.querySelectorAll('.delete').length) {
-                        // document.getElementsByTagName('script')[7].remove();
-                        // document.getElementsByTagName('script')[6].remove();
-                        // document.getElementsByTagName('script')[5].remove();
-                        // document.getElementsByTagName('script')[4].remove();
-                        for (var i = tags.length; i >= 0; i--){ //search backwards within nodelist for matching elements to remove
-                        if (tags[i] && tags[i].getAttribute('src') != null && tags[i].getAttribute('src').indexOf(filename) != -1)
-                        tags[i].parentNode.removeChild(tags[i]); //remove element by calling parentNode.removeChild()
-                        }
+                    for (var ii = 0; ii < allchecked.length; ii++) {
+                        allchecked[ii].checked = false
                     }
-                }
-
-                for (var ii = 0; ii < allchecked.length; ii++) {
-                    allchecked[ii].checked = false
                 }
             },
 
